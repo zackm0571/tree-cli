@@ -9,7 +9,8 @@ Open a terminal, cd to src directory
 
 	./run.sh <number>
 
-ex:	
+ex:
+
 	./run.sh 5
 
 	./run.sh 3
