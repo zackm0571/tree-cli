@@ -5,10 +5,11 @@ Instructions:
 
 Open a terminal, cd to src directory
 
-chmod 755 run.sh
+	chmod 755 run.sh
 
-./run.sh <number>
+	./run.sh <number>
 
-ex:	./run.sh 5
+ex:	
+	./run.sh 5
 
 	./run.sh 3
