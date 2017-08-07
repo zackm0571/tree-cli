@@ -56,7 +56,7 @@ void printNode(string tag, int val, int gap, int newline){
 
 }
 
-void traverseTree(Node *n){
+void printTree(Node *n){
 	if(n == NULL) return;
 	printNode("Node value", n->val, 5 , 1);
 
@@ -71,10 +71,25 @@ void traverseTree(Node *n){
 	}
 	
 	for(int k = 0; k < n->vertices.size(); k++){
-		traverseTree(n->vertices[k]);
+		printTree(n->vertices[k]);
 	}
 }
 
+Node* findNode(Node* root, int val){
+	if(root == NULL) return NULL;
+	if(root->val == val) return root;	
+	Node *n = NULL;	
+	if(root->val != val){
+		for(int i = 0; i < root->vertices.size(); i++){
+			n = findNode(root->vertices.at(i), val);
+			if(n != NULL){
+				break;
+			}	
+		}
+	}
+	
+	return n;	
+}
 int main(int argc, char *argv[]){
 	assert(argc == 2);
 
@@ -86,6 +101,17 @@ int main(int argc, char *argv[]){
 
 	Node *root = new Node();
 	root = generateTree(root, seedArg);
-	traverseTree(root);	
+	printTree(root);	
+
+
+	Node *child = findNode(root, 3);
+
+	if(child != NULL){
+
+		printf("\n Node found: %d \n", child->val);
+	}
+	else{
+		printf("\n %s \n", "No child with value found");
+	}
 	return 0;
 }
